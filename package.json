@@ -1,0 +1,24 @@
+{
+	"name": "clone-tabnews",
+	"version": "1.0.0",
+	"description": "creating a clone for tabnews.com.br. Curso.dev",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KatrielKoga/clone-tabnews.git"
+	},
+	"author": "katrielkoga",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/KatrielKoga/clone-tabnews/issues"
+	},
+	"homepage": "https://github.com/KatrielKoga/clone-tabnews#readme",
+	"dependencies": {
+		"next": "^13.1.6",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	}
+}
