@@ -55,21 +55,11 @@ describe("POST /api/v1/users", () => {
       expect(incorrectPasswordMatch).toBe(false);
     });
     test("With duplicated 'email'", async () => {
-      const response1 = await fetch("http://localhost:3000/api/v1/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: "emailduplicado1",
-          email: "duplicado@curso.dev",
-          password: "senha123",
-        }),
+      await orchestrator.createUser({
+        email: "duplicado@curso.dev",
       });
 
-      expect(response1.status).toBe(201);
-
-      const response2 = await fetch("http://localhost:3000/api/v1/users", {
+      const response = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,9 +71,9 @@ describe("POST /api/v1/users", () => {
         }),
       });
 
-      expect(response2.status).toBe(400);
+      expect(response.status).toBe(400);
 
-      const responseBody2 = await response2.json();
+      const responseBody2 = await response.json();
 
       expect(responseBody2).toEqual({
         name: "ValidationError",
@@ -93,21 +83,11 @@ describe("POST /api/v1/users", () => {
       });
     });
     test("With duplicated 'username'", async () => {
-      const response1 = await fetch("http://localhost:3000/api/v1/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: "duplicado",
-          email: "usernameduplicado1@curso.dev",
-          password: "senha123",
-        }),
+      await orchestrator.createUser({
+        username: "duplicado",
       });
 
-      expect(response1.status).toBe(201);
-
-      const response2 = await fetch("http://localhost:3000/api/v1/users", {
+      const response = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,9 +99,9 @@ describe("POST /api/v1/users", () => {
         }),
       });
 
-      expect(response2.status).toBe(400);
+      expect(response.status).toBe(400);
 
-      const responseBody2 = await response2.json();
+      const responseBody2 = await response.json();
 
       expect(responseBody2).toEqual({
         name: "ValidationError",
