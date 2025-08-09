@@ -9,7 +9,7 @@ beforeAll(async () => {
   await orchestrator.runPendingMigrations();
 });
 
-describe("PATCH /api/v1/[username]", () => {
+describe("PATCH /api/v1/users/[username]", () => {
   describe("Anonymous user", () => {
     test("With nonexistent 'username'", async () => {
       const response = await fetch(
