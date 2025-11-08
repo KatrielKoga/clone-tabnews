@@ -77,7 +77,15 @@ async function getLastEmail() {
   return lastEmailItem;
 }
 
+function extractUUID(text) {
+  const match = text.match(
+    /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/,
+  );
+  return match ? match[0] : null;
+}
+
 const orchestrator = {
+  extractUUID,
   waitForAllServices,
   clearDatabase,
   runPendingMigrations,
