@@ -53,7 +53,7 @@ describe("POST /api/v1/users", () => {
       expect(correctPasswordMatch).toBe(true);
       expect(incorrectPasswordMatch).toBe(false);
     });
-    test("With duplicated 'email'", async () => {
+    test("With duplicated `email`", async () => {
       await orchestrator.createUser({
         email: "duplicado@curso.dev",
       });
@@ -81,7 +81,7 @@ describe("POST /api/v1/users", () => {
         status_code: 400,
       });
     });
-    test("With duplicated 'username'", async () => {
+    test("With duplicated `username", async () => {
       await orchestrator.createUser({
         username: "duplicado",
       });
